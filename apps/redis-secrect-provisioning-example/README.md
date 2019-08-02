@@ -32,6 +32,12 @@ Start the verifier
 ./verifier
 ```
 
+Expose AESMD's domain socket via TCP such that it can be reached from within Graphene
+
+``` bash
+socat -t10 TCP-LISTEN:1234,bind=127.0.0.1,reuseaddr,fork,range=127.0.0.0/8 UNIX-CLIENT:/var/run/aesmd/aesm.socket &
+```
+
 Start the Redis server
 
 ``` bash

@@ -60,6 +60,8 @@ Service (verifier)</code></pre>
 <h1 id="run">Run</h1>
 <p>Start the verifier</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./verifier</span></code></pre></div>
+<p>Expose AESMD's domain socket via TCP such that it can be reached from within Graphene</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">socat</span> -t10 TCP-LISTEN:1234,bind=127.0.0.1,reuseaddr,fork,range=127.0.0.0/8 UNIX-CLIENT:/var/run/aesmd/aesm.socket <span class="kw">&amp;</span></code></pre></div>
 <p>Start the Redis server</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">make</span> redis-server-run</code></pre></div>
 <p>The server will print couple messages after the verifier successfully released the password.</p>
