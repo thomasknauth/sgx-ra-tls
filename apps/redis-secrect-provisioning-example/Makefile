@@ -79,7 +79,7 @@ PROVISION_LDFLAGS=-shared
 	cd ../.. && $(MAKE) deps/local/lib/libcurl-mbedtls.a
 	cd ../.. && $(MAKE) mbedtls/libnonsdk-ra-attester.a
 
-redis-server-provision-secret.so: ../../mbedtls/libnonsdk-ra-attester.a redis-server-provision-secret.c | verifier-crt.pem
+redis-server-provision-secret.so: ../../mbedtls/libnonsdk-ra-attester.a redis-server-provision-secret.c ../../ra_tls_options.c | verifier-crt.pem
 	$(CC) $(CFLAGS) -Iredis/src $^ -o $@ $(PROVISION_LDFLAGS) -fPIC $(PROVISION_LDLIBS)
 
 ../../deps/graphene/Runtime/pal-Linux-SGX: ../../Makefile

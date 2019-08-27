@@ -17,13 +17,7 @@
 
 unsigned char secret[1024];
 
-struct ra_tls_options my_ra_tls_options = {
-    .spid = {{0xAC, 0xF4, 0x77, 0x84, 0x9A, 0x55, 0x53, 0x12,
-              0x5E, 0xC9, 0xC2, 0xD4, 0xA0, 0x53, 0x38, 0xDA}},
-    .quote_type = SGX_UNLINKABLE_SIGNATURE,
-    .ias_server = "api.trustedservices.intel.com/sgx/dev",
-    .subscription_key = "ce00381c4ef747769a9bde7edadf2f99"
-};
+extern struct ra_tls_options my_ra_tls_options;
 
 static
 void ssl_read_exactly_n_bytes(mbedtls_ssl_context* ssl, unsigned char* p, int len) {
