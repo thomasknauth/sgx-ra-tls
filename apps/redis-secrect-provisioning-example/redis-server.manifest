@@ -51,6 +51,7 @@ sgx.trusted_files.libnssdns = file:../../deps/graphene/Runtime/libnss_dns.so.2
 sgx.trusted_files.libresolv = file:../../deps/graphene/Runtime/libresolv.so.2
 sgx.trusted_files.librt = file:../../deps/graphene/Runtime/librt.so.1
 sgx.trusted_files.libgccs = file:/lib/x86_64-linux-gnu/libgcc_s.so.1
+sgx.trusted_files.libmdns4 = file:/lib/x86_64-linux-gnu/libnss_mdns4_minimal.so.2
 
 sgx.allowed_files.passwd = file:/etc/passwd
 sgx.allowed_files.shadow = file:/etc/shadow
