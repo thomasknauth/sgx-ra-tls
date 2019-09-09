@@ -88,16 +88,16 @@ redis-server-provision-secret.so: ../../mbedtls/libnonsdk-ra-attester.a redis-se
 ../../deps/graphene/Runtime/redis-server-provision-secret.so: redis-server-provision-secret.so | ../../deps/graphene/Runtime/pal-Linux-SGX
 	cp $^ $@
 
-.PHONY=redis-server-run
+.PHONY: redis-server-run
 redis-server-run: ../../deps/graphene/Runtime/redis-server-provision-secret.so redis-server.token
 	$(GRAPHENEDIR)/Runtime/pal-Linux-SGX ./redis-server.manifest.sgx --save "" --protected-mode no --requirepass XXXXX
 
-.PHONY=redis-server-clean
+.PHONY: redis-server-clean
 redis-server-clean:
 	$(RM) redis-server.token redis-server.sig redis-server.manifest.sgx ../../deps/graphene/Runtime/redis-server-provision-secret.so redis-server-provision-secret.so
 	$(RM) redis_server_sgx_identity.c
 
-.PHONY=mrproper
+.PHONY: mrproper
 mrproper: redis-server-clean
 	$(RM) -rf redis-5.0.0 redis redis-5.0.0.zip verifier redis-server-provision-secret.so verifier-crt.pem verifier-key.pem
 
@@ -106,7 +106,7 @@ mrproper: redis-server-clean
 
 html: README.html
 
-.PHONY=verifier-run
+.PHONY: verifier-run
 verifier-run: verifier
 ifeq ($(DEBUG),1)
 	gdb --args ./verifier
